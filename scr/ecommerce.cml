@@ -1,0 +1,24 @@
+ContextMap SacEcommerceMap{
+    contains GestionOrdenesContext
+    contains GestionEnviosContext
+    contains GestionClientesContext
+    contains GestionPagosContext
+    contains GestionAutorizacionAuteticacionContext
+    contains CatalogProductosContext
+
+    GestionClientesContext [P] <-> [P] GestionEnviosContext
+    GestionOrdenesContext [P] <-> [P] GestionClientesContext
+    GestionOrdenesContext [P] <-> [P] GestionPagosContext
+
+    GestionClientesContext [CF] <-[PL] GestionAutorizacionAuteticacionContext
+
+    CatalogProductosContext [U,OHS] -> [D] GestionOrdenesContext
+
+}
+
+BoundedContext GestionOrdenesContext{}
+BoundedContext GestionEnviosContext{}
+BoundedContext GestionClientesContext{}
+BoundedContext GestionPagosContext{}
+BoundedContext GestionAutorizacionAuteticacionContext{}
+BoundedContext CatalogProductosContext{}
